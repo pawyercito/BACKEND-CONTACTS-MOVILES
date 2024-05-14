@@ -1,0 +1,78 @@
+# Nodemon
+nmon/
+
+# Dependencias
+node_modules/
+npm-debug.log*
+
+# Archivos de configuración de Node.js
+.npmrc
+.pnp.js
+
+# Archivo de entorno
+.env
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.log
+*.tmp
+*.tmp.*
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.nwspec
+*.psess
+*.pydevproject
+*.tmproj
+*.bak
+*.cache
+*.class
+*.db
+*.db-journal
+*.flow
+*.journal
+ *.lock
+*.map
+*.meta
+*.orig
+*.pyc
+*.pyo
+*.py~
+*.rbc
+*.rdata
+*.rej
+*.rspec
+*.sqlite3
+*.sqlite3-journal
+*.swo
+*.swn
+*.tmp
+*.tmp.*
+*.tml
+*.tmproj
+*.tmprojcore
+*.tmp.*
+*.tmp_proj
+*.tmp_projcore
+*.tmtags
+*.tomtags
+*.um~.ut~.vm~.bak
+*.bak.*.backup~.bak.*.backup.*.conflict.*.dist~.dist.*.merged.*.patched.*.remote~.tmp~.tmp.*.working~.working.*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+ehthumbs_vista.db
+Icon
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
