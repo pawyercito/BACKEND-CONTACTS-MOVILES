@@ -25,8 +25,8 @@ exports.removeContactFromGroup = async (req, res) => {
     }
 
     // Verificar si el contacto ya ha sido eliminado (fuera del grupo)
-    const groupContact = group.contacts.id(contactId);
-    if (!groupContact) {
+    const isInGroup = group.contacts.some(groupContactId => groupContactId.equals(contactId));
+    if (!isInGroup) {
       return res.status(400).json({ msg: 'El contacto ya no pertenece al grupo' });
     }
 
