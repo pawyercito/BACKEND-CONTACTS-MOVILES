@@ -1,12 +1,14 @@
 // controllers/contactViewController.js
 const Contact = require('../../models/Contact');
+const { findContactById } = require('./contactUtils');
+
 
 exports.viewContact = async (req, res) => {
   try {
     // Obtener el ID del contacto de los parámetros de la URL
     const { id } = req.params;
     // Buscar el contacto en la base de datos por su ID
-    const contact = await Contact.findById(id);
+    const contact = await findContactById(id);
     // Verificar si el contacto existe
     if (!contact) {
       return res.status(404).json({ msg: 'Contacto no encontrado' });
