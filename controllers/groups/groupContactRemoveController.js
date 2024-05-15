@@ -24,6 +24,12 @@ exports.removeContactFromGroup = async (req, res) => {
       return res.status(404).json({ msg: 'Contacto no encontrado' });
     }
 
+    // Verificar si el contacto ya ha sido eliminado
+    const deletedContact = await Contact.findByIdAndDelete(contactId);
+    if (!deletedContact) {
+      return res.status(400).json({ msg: 'El contacto ya no pertenece al grupo' });
+    }
+
     // Remover el contacto de la lista de contactos del grupo
     group.contacts.pull(contactId);
     await group.save();
