@@ -28,3 +28,7 @@ exports.createContact = async (req, res) => {
     await newContact.save();
     res.status(201).json({ msg: 'Contacto creado exitosamente', contact: newContact });
   } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Error al crear el contacto' });
+  }
+};
