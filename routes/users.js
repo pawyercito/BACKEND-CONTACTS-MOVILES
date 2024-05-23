@@ -6,6 +6,7 @@ const {login} = require('../controllers/users/userLoginController');
 const {modify} = require('../controllers/users/userModifyController');
 const authenticateUser = require('../middleware_auth');
 const {remove} = require('../controllers/users/userDeleteController');
+const {getUserById} = require('../controllers/users/userGetByIdController');
 
 
 // Registro
@@ -22,6 +23,9 @@ router.put('/edit-profile', modify);
 
 // Eliminar cuenta
 router.delete('/delete-account', remove);
+
+// Obtener usuario por ID
+router.get('/user/:id', getUserById);
 
   
 module.exports = router;

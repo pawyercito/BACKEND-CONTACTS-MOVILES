@@ -22,7 +22,6 @@ router.put('/edit-contact/:id', authenticateUser, modifyContact);
 // Eliminar contacto
 router.delete('/delete-contact/:id', authenticateUser, removeContact);
 
-
 // Mostrar todos los contactos
 router.get('/view-contacts', authenticateUser, listContacts);
 
