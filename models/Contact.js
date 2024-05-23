@@ -4,7 +4,10 @@ const { Schema } = mongoose;
 const ContactSchema = new Schema({
   name: { type: String, required: true },
   lastName: { type: String, required: true },
-  phoneNumber: { type: String, required: true },
+  phoneNumbers: [{
+    type: { type: String, enum: ['home', 'work', 'personal'], required: true },
+    number: { type: String, required: true }
+  }],
   email: { type: String, required: true, validate: {
     validator: function(v) {
       return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v);
