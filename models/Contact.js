@@ -2,24 +2,24 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ContactSchema = new Schema({
-  name: { type: String, required: true },
-  lastName: { type: String, required: true },
+  name: { type: String, required: false },
+  lastName: { type: String, required: false },
   phoneNumbers: [{
-    type: { type: String, enum: ['home', 'work', 'personal'], required: true },
+    type: { type: String, enum: ['home', 'work', 'personal'], required: false },
     number: { type: String, required: true }
   }],
-  email: { type: String, required: true, validate: {
+  email: { type: String, required: false, validate: {
     validator: function(v) {
       return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v);
     },
-    message: props => `${props.value} no es un correo electrónico válido`
+    message: props => `${props.value} is not a valid email`
   }},
-  address: { type: String, required: false }, // Este campo es opcional
-  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }, // Agrega este campo
+  address: { type: String, required: false }, // This field is optional
+  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }, // Add this field
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 }, {
-  timestamps: true // Esto automáticamente añade los campos createdAt y updatedAt
+  timestamps: true // This automatically adds the createdAt and updatedAt fields
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);

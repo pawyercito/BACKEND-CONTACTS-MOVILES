@@ -7,6 +7,8 @@ const { listGroups } = require('../controllers/groups/groupListController'); // 
 const { deleteGroup } = require('../controllers/groups/groupDeleteController');
 const authenticateUser = require('../middleware_auth');
 const { removeContactFromGroup } = require('../controllers/groups/groupContactRemoveController');
+const {addContactToGroup} = require('../controllers/groups/groupAddContactToGroupController');
+
 
 
 // Rutas para grupos
@@ -24,5 +26,7 @@ router.put('/edit-group/:id', authenticateUser, updateGroup);
 router.get('/list-groups', authenticateUser, listGroups); // Utiliza el controlador listGroups aquí
 
 router.delete('/groups/:groupId/contacts/:contactId', authenticateUser, removeContactFromGroup);
+
+router.post('/groups/add-contacts', authenticateUser, addContactToGroup);
 
 module.exports = router;
