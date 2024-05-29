@@ -3,13 +3,19 @@ const Contact = require('../../models/Contact');
 
 exports.createContact = async (req, res) => {
   try {
+    // Inicializamos phoneNumbersToCheck como un array vacío si req.body.phoneNumbers no está presente o no es un array
+    let phoneNumbersToCheck = [];
+    if (Array.isArray(req.body.phoneNumbers)) {
+      phoneNumbersToCheck = req.body.phoneNumbers.map(phoneNumber => phoneNumber.number);
+    }
+
     // Verificar si ya existe un contacto con algún número de teléfono duplicado para el mismo usuario
     const existingContacts = await Contact.find({
       userId: req.user._id,
-      'phoneNumbers.number': { $in: req.body.phoneNumbers.map(phoneNumber => phoneNumber.number) }
+      'phoneNumbers.number': { $in: phoneNumbersToCheck }
     }).lean(); // Usamos lean() para evitar la serialización completa de Mongoose
 
-    if (existingContacts.length > 0) {
+    if (existingContacts.length > 0 && phoneNumbersToCheck.length > 0) {
       return res.status(400).json({ msg: 'Existen números de teléfono duplicados.' });
     }
 
