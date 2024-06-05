@@ -15,7 +15,7 @@ exports.listGroups = async (req, res) => {
       let populatedGroup = await Group.populate(group, {
           path: 'contacts',
           model: 'Contact',
-          select: 'name lastName'
+          select: 'name lastName number email address' // Selecciona todos los campos adicionales aquí
         });
 
       // Segunda población: usuario
